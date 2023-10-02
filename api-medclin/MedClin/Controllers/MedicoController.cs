@@ -15,11 +15,18 @@ namespace MedClin.Controllers
 
 		private ICadastrarMedicoService _cadastrarMedicoService;
 		private IBuscarMedicoPorCrm _encontrarCRM;
+		private IListarTodosOsMedicosDisponiveis  _listarTodosOsMedicosDisponiveis;
+		private IAtualizarStatusMedico _atualizarStatusMedico;
 
-		public MedicoController(ICadastrarMedicoService cadastrarMedicoService, IBuscarMedicoPorCrm buscarMedicoPorCrm)
+		public MedicoController(ICadastrarMedicoService cadastrarMedicoService
+			                      , IBuscarMedicoPorCrm buscarMedicoPorCrm
+					, IListarTodosOsMedicosDisponiveis  listarTodosOsMedicosDisponiveis
+					, IAtualizarStatusMedico atualizarStatusMedico)
 		{
 			_cadastrarMedicoService = cadastrarMedicoService;
 			_encontrarCRM = buscarMedicoPorCrm;
+			_listarTodosOsMedicosDisponiveis = listarTodosOsMedicosDisponiveis;
+			_atualizarStatusMedico = atualizarStatusMedico;
 		}
 
 		[HttpPost]
@@ -29,6 +36,14 @@ namespace MedClin.Controllers
 			var medico = _cadastrarMedicoService.CadastrarMedico(request);
 
 			return CreatedAtAction(nameof(EncontrarMedicoPorCrm), new { crm = medico.Crm }, medico);
+		}
+
+		[HttpGet]
+		public IActionResult ListarMedicosDisponiveis()
+		{
+			var listarMedicos = _listarTodosOsMedicosDisponiveis.ListarTodosOsMedicosDisponiveis();
+
+			return Ok(listarMedicos);
 		}
 
 		[HttpGet("{crm}")]
@@ -42,6 +57,17 @@ namespace MedClin.Controllers
 			}
 
 			return Ok(new CadastrarMedicoResponse(medico));
+		}
+
+		[HttpPut("{crm}")]
+		public IActionResult AtualizarStatusDeAtividade(string crm, [FromBody] AtualizarStatusMedicoRequest status)
+		{
+			Medico medico = _atualizarStatusMedico.alterarStatus(crm, status);
+
+			if (medico == null)
+				return NotFound($"O crm de nr.{crm}, não foi encontrado");
+
+			return Ok(new AtualizarStatusMedicoResponse(medico));
 		}
 	}
 }

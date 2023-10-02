@@ -21,6 +21,9 @@ namespace MedClin
 			//Injetando serviço Médico
 			builder.Services.AddScoped<ICadastrarMedicoService, MedicoService>();
 			builder.Services.AddScoped<IBuscarMedicoPorCrm, MedicoService>();
+			builder.Services.AddScoped<IListarTodosOsMedicosDisponiveis, MedicoService>();
+			builder.Services.AddScoped<IAtualizarStatusMedico, MedicoService>();
+
 			builder.Services.AddScoped<IValidForm<CadastrarMedicoRequest>, ValidarCrmCadastrado>();
 
 			//DataBase Conn

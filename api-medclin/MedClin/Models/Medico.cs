@@ -26,8 +26,10 @@ namespace MedClin.Models
 			Status = true;
 		}
 
-
-        
+		public Medico(AtualizarStatusMedicoRequest atualizarStatusMedico)
+		{
+			Status = atualizarStatusMedico.Status;
+		}        
 
     }
 }

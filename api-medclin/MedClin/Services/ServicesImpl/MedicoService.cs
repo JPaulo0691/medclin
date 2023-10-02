@@ -3,10 +3,11 @@ using MedClin.DTOs.MedicoDTOs.Request;
 using MedClin.Models;
 using MedClin.Services.Interface;
 using MedClin.Validations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MedClin.Services.ServicesImpl
 {
-	public class MedicoService : ICadastrarMedicoService, IBuscarMedicoPorCrm
+	public class MedicoService : ICadastrarMedicoService, IBuscarMedicoPorCrm, IListarTodosOsMedicosDisponiveis, IAtualizarStatusMedico
 	{
 		private MedicoContext _context;
 		private IEnumerable<IValidForm<CadastrarMedicoRequest>> _validator;
@@ -29,6 +30,11 @@ namespace MedClin.Services.ServicesImpl
 			return medico;
 		}
 
+		public IEnumerable<Medico> ListarTodosOsMedicosDisponiveis([FromQuery] int skip = 0, int take = 10)
+		{
+			return _context.Medico.Skip(skip).Take(take).Where(medico => medico.Status == true);
+		}
+
 		public Medico EncontrarMedicoPorCrm(string crm)
 		{
 			Medico medico = _context.Medico.FirstOrDefault(medico => medico.Crm.Equals(crm));
@@ -39,6 +45,24 @@ namespace MedClin.Services.ServicesImpl
 			}
 
 			return medico;
+		}
+
+		public Medico alterarStatus(string crm, AtualizarStatusMedicoRequest atualizarStatus)
+		{
+			Medico medico = _context.Medico.FirstOrDefault(medico => medico.Crm.Equals(crm));
+
+			if (medico == null)
+			{
+				throw new Exception($"O médico de CRM {medico.Crm} não foi encontrado");
+			}
+			else
+			{
+				medico.Status = atualizarStatus.Status;
+				_context.SaveChanges();
+			}
+
+			return medico;
+
 		}
 	}
 }
