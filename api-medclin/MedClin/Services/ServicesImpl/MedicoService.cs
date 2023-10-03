@@ -24,7 +24,7 @@ namespace MedClin.Services.ServicesImpl
 
 			Medico medico = new Medico(request);
 
-			_context.Medico.Add(medico);
+			_context.Medicos.Add(medico);
 			_context.SaveChanges();
 
 			return medico;
@@ -32,12 +32,12 @@ namespace MedClin.Services.ServicesImpl
 
 		public IEnumerable<Medico> ListarTodosOsMedicosDisponiveis([FromQuery] int skip = 0, int take = 10)
 		{
-			return _context.Medico.Skip(skip).Take(take).Where(medico => medico.Status == true);
+			return _context.Medicos.Skip(skip).Take(take).Where(medico => medico.Status == true);
 		}
 
 		public Medico EncontrarMedicoPorCrm(string crm)
 		{
-			Medico medico = _context.Medico.FirstOrDefault(medico => medico.Crm.Equals(crm));
+			Medico medico = _context.Medicos.FirstOrDefault(medico => medico.Crm.Equals(crm));
 
 			if (medico == null)
 			{
@@ -49,7 +49,7 @@ namespace MedClin.Services.ServicesImpl
 
 		public Medico alterarStatus(string crm, AtualizarStatusMedicoRequest atualizarStatus)
 		{
-			Medico medico = _context.Medico.FirstOrDefault(medico => medico.Crm.Equals(crm));
+			Medico medico = _context.Medicos.FirstOrDefault(medico => medico.Crm.Equals(crm));
 
 			if (medico == null)
 			{

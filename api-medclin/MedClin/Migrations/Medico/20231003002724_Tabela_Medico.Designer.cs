@@ -2,6 +2,7 @@
 using MedClin.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedClin.Migrations.Medico
 {
     [DbContext(typeof(MedicoContext))]
-    partial class MedicoContextModelSnapshot : ModelSnapshot
+    [Migration("20231003002724_Tabela_Medico")]
+    partial class Tabela_Medico
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

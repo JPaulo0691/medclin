@@ -15,7 +15,7 @@ namespace MedClin.Validations.Medicos
 
 		public void validForm(CadastrarMedicoRequest cadastro)
 		{
-			var crm = _medicoContext.Medico.Any(medico => medico.Crm.Equals(cadastro.Crm));
+			var crm = _medicoContext.Medicos.Any(medico => medico.Crm.Equals(cadastro.Crm));
 
 			if(crm == true)
 			{

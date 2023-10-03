@@ -34,15 +34,5 @@ namespace MedClin.Models
 			Numero = pacienteDTO.Numero;
 		}
 
-		public Endereco(CadastrarMedicoRequest cadastrarMedico)
-		{
-			Estado = cadastrarMedico.Estado;
-			Municipio = cadastrarMedico.Municipio;
-			Bairro = cadastrarMedico.Bairro;
-			Rua = cadastrarMedico.Rua;
-			Complemento = cadastrarMedico.Complemento;
-			Numero = cadastrarMedico.Numero;
-		}
-
 	}
 }
