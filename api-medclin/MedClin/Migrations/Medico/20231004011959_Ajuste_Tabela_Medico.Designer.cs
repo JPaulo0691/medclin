@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedClin.Migrations.Medico
 {
     [DbContext(typeof(MedicoRepository))]
-    [Migration("20231003002724_Tabela_Medico")]
-    partial class Tabela_Medico
+    [Migration("20231004011959_Ajuste_Tabela_Medico")]
+    partial class Ajuste_Tabela_Medico
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,22 @@ namespace MedClin.Migrations.Medico
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("MedClin.Models.Especialidade", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Especialidades");
+                });
 
             modelBuilder.Entity("MedClin.Models.Medico", b =>
                 {
@@ -32,6 +48,9 @@ namespace MedClin.Migrations.Medico
                         .HasMaxLength(8)
                         .HasColumnType("varchar(8)");
 
+                    b.Property<int>("EspecialidadeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -41,7 +60,25 @@ namespace MedClin.Migrations.Medico
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EspecialidadeId");
+
                     b.ToTable("Medicos");
+                });
+
+            modelBuilder.Entity("MedClin.Models.Medico", b =>
+                {
+                    b.HasOne("MedClin.Models.Especialidade", "Especialidade")
+                        .WithMany("Medicos")
+                        .HasForeignKey("EspecialidadeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Especialidade");
+                });
+
+            modelBuilder.Entity("MedClin.Models.Especialidade", b =>
+                {
+                    b.Navigation("Medicos");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,6 @@
 ﻿using MedClin.DTOs.MedicoDTOs.Request;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedClin.Models
 {
@@ -14,6 +15,12 @@ namespace MedClin.Models
 		[StringLength(8, ErrorMessage = "O CRM só pode conter no máximo 8 dígitos")]
 		public string Crm { get; set; }		
 		public bool Status { get; set; }
+
+		[ForeignKey("Especialidade")]
+		public int EspecialidadeId { get; set; }
+
+		// Propriedade de navegação para a especialidade
+		public Especialidade Especialidade { get; set; }
 
 		public Medico() { }
 

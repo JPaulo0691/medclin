@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MedClin.Migrations.Medico
+namespace MedClin.Migrations.EspecialidadeRepositoryMigrations
 {
-    [DbContext(typeof(MedicoRepository))]
-    partial class MedicoContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(EspecialidadeRepository))]
+    partial class EspecialidadeRepositoryModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -59,7 +59,7 @@ namespace MedClin.Migrations.Medico
 
                     b.HasIndex("EspecialidadeId");
 
-                    b.ToTable("Medicos");
+                    b.ToTable("Medico");
                 });
 
             modelBuilder.Entity("MedClin.Models.Medico", b =>

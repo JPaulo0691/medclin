@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MedClin.Migrations
 {
-    [DbContext(typeof(PacienteContext))]
+    [DbContext(typeof(PacienteRepository))]
     partial class PacienteContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -53,26 +53,32 @@ namespace MedClin.Migrations
 
                             b1.Property<string>("Bairro")
                                 .IsRequired()
-                                .HasColumnType("longtext");
+                                .HasColumnType("longtext")
+                                .HasColumnName("Bairro");
 
                             b1.Property<string>("Complemento")
                                 .IsRequired()
-                                .HasColumnType("longtext");
+                                .HasColumnType("longtext")
+                                .HasColumnName("Complemento");
 
                             b1.Property<string>("Estado")
                                 .IsRequired()
-                                .HasColumnType("longtext");
+                                .HasColumnType("longtext")
+                                .HasColumnName("Estado");
 
                             b1.Property<string>("Municipio")
                                 .IsRequired()
-                                .HasColumnType("longtext");
+                                .HasColumnType("longtext")
+                                .HasColumnName("Municipio");
 
                             b1.Property<int>("Numero")
-                                .HasColumnType("int");
+                                .HasColumnType("int")
+                                .HasColumnName("Numero");
 
                             b1.Property<string>("Rua")
                                 .IsRequired()
-                                .HasColumnType("longtext");
+                                .HasColumnType("longtext")
+                                .HasColumnName("Rua");
 
                             b1.HasKey("PacienteId");
 

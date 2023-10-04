@@ -1,0 +1,24 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MedClin.Models
+{
+	public class Agendamento
+	{
+		//[Key]
+		//[Required]
+		//public int Id { get; set; }
+
+		//[Required]
+		//public DateTime DataHoraConsulta { get; set; }
+
+		//// Propriedades de navegação
+		//public int MedicoId { get; set; }
+		//public Medico Medico { get; set; }
+
+		//public int PacienteId { get; set; }
+		//public Paciente Paciente { get; set; }
+
+		//public int ClinicaId { get; set; }
+		//public Clinica Clinica { get; set; }
+	}
+}

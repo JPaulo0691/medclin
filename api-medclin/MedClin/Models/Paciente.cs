@@ -17,9 +17,10 @@ namespace MedClin.Models
 		public Endereco Endereco { get; set; }
 		[Required(ErrorMessage = "Campo contato é obrigatório")]
 		public string Contato { get; set; }
-		public bool Status { get; set; }	 
+		public bool Status { get; set; }
+		//public ICollection<Agendamento> Agendamentos { get; set; }
 
-        public Paciente() {        
+		public Paciente() {        
         }
 
         public Paciente(CadastrarPacienteDTO pacienteDTO)

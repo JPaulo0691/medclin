@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MedClin.Migrations
 {
-    [DbContext(typeof(PacienteContext))]
+    [DbContext(typeof(PacienteRepository))]
     [Migration("20230920002734_CriandoTabelaPacientes")]
     partial class CriandoTabelaPacientes
     {

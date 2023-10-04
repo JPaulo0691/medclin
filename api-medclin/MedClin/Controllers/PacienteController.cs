@@ -11,10 +11,10 @@ namespace MedClin.Controllers
 	[ApiController]
 	public class PacienteController : ControllerBase
 	{
-		private PacienteContext _context;
+		private PacienteRepository _context;
 		private IMapper _mapper;
 
-		public PacienteController(PacienteContext context)
+		public PacienteController(PacienteRepository context)
 		{
 			_context = context;			
 		}

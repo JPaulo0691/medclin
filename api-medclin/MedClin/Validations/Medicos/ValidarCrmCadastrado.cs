@@ -6,9 +6,9 @@ namespace MedClin.Validations.Medicos
 {
 	public class ValidarCrmCadastrado : IValidForm<CadastrarMedicoRequest>
 	{
-		private MedicoContext _medicoContext;
+		private MedicoRepository _medicoContext;
 
-		public ValidarCrmCadastrado(MedicoContext medicoContext)
+		public ValidarCrmCadastrado(MedicoRepository medicoContext)
 		{
 			_medicoContext = medicoContext;
 		}

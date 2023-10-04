@@ -110,3 +110,5 @@ C:\Users\paulo\Documents\MedClinProject\api-medclin\MedClin\obj\Debug\net6.0\ref
 C:\Users\paulo\Documents\MedClinProject\api-medclin\MedClin\obj\Debug\net6.0\MedClin.pdb
 C:\Users\paulo\Documents\MedClinProject\api-medclin\MedClin\obj\Debug\net6.0\MedClin.genruntimeconfig.cache
 C:\Users\paulo\Documents\MedClinProject\api-medclin\MedClin\obj\Debug\net6.0\ref\MedClin.dll
+C:\Users\paulo\Documents\MedClinProject\api-medclin\MedClin\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\paulo\Documents\MedClinProject\api-medclin\MedClin\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll

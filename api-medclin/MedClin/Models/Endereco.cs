@@ -1,5 +1,5 @@
 ﻿using MedClin.DTOs;
-using MedClin.DTOs.MedicoDTOs.Request;
+
 
 namespace MedClin.Models
 {

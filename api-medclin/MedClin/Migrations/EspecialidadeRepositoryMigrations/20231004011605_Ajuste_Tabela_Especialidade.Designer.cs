@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MedClin.Migrations.Medico
+namespace MedClin.Migrations.EspecialidadeRepositoryMigrations
 {
-    [DbContext(typeof(MedicoRepository))]
-    [Migration("20231003002724_Tabela_Medico")]
-    partial class Tabela_Medico
+    [DbContext(typeof(EspecialidadeRepository))]
+    [Migration("20231004011605_Ajuste_Tabela_Especialidade")]
+    partial class Ajuste_Tabela_Especialidade
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,27 +21,20 @@ namespace MedClin.Migrations.Medico
                 .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("MedClin.Models.Medico", b =>
+            modelBuilder.Entity("MedClin.Models.Especialidade", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Crm")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("varchar(8)");
-
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("tinyint(1)");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medicos");
+                    b.ToTable("Especialidades");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,6 @@
 using MedClin.DataBase;
 using MedClin.DTOs.MedicoDTOs.Request;
+using MedClin.Models;
 using MedClin.Services.Interface;
 using MedClin.Services.ServicesImpl;
 using MedClin.Validations;
@@ -27,10 +28,19 @@ namespace MedClin
 			builder.Services.AddScoped<IValidForm<CadastrarMedicoRequest>, ValidarCrmCadastrado>();
 
 			//DataBase Conn
-			builder.Services.AddDbContext<PacienteContext>(opts => 
+			builder.Services.AddDbContext<PacienteRepository>(opts => 
 				opts.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString)));
 
-			builder.Services.AddDbContext<MedicoContext>(opts =>
+			builder.Services.AddDbContext<MedicoRepository>(opts =>
+				opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+			//builder.Services.AddDbContext<AgendamentoRepository>(opts =>
+			//	opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+			//builder.Services.AddDbContext<ClinicaRepository>(opts =>
+			//	opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+			builder.Services.AddDbContext<EspecialidadeRepository>(opts =>
 				opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 			// Add services to the container.

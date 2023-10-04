@@ -9,10 +9,10 @@ namespace MedClin.Services.ServicesImpl
 {
 	public class MedicoService : ICadastrarMedicoService, IBuscarMedicoPorCrm, IListarTodosOsMedicosDisponiveis, IAtualizarStatusMedico
 	{
-		private MedicoContext _context;
+		private MedicoRepository _context;
 		private IEnumerable<IValidForm<CadastrarMedicoRequest>> _validator;
 
-		public MedicoService(MedicoContext context, IEnumerable<IValidForm<CadastrarMedicoRequest>> validator )
+		public MedicoService(MedicoRepository context, IEnumerable<IValidForm<CadastrarMedicoRequest>> validator )
 		{
 			_context = context;
 			_validator = validator;
