@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedClin.Migrations.Medico
 {
     [DbContext(typeof(MedicoRepository))]
-    [Migration("20231004011959_Ajuste_Tabela_Medico")]
-    partial class Ajuste_Tabela_Medico
+    [Migration("20231005233530_Alterando_Medico_Virtual")]
+    partial class Alterando_Medico_Virtual
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace MedClin.Migrations.Medico
 
                     b.HasKey("Id");
 
-                    b.ToTable("Especialidades");
+                    b.ToTable("Especialidade");
                 });
 
             modelBuilder.Entity("MedClin.Models.Medico", b =>

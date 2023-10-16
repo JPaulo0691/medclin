@@ -34,16 +34,18 @@ namespace MedClin.Controllers
 		{
 
 			var medico = _cadastrarMedicoService.CadastrarMedico(request);
+			var response = new CadastrarMedicoResponse(medico);
 
-			return CreatedAtAction(nameof(EncontrarMedicoPorCrm), new { crm = medico.Crm }, medico);
+			return CreatedAtAction(nameof(EncontrarMedicoPorCrm), new { crm = response.Crm }, response);
 		}
 
 		[HttpGet]
 		public IActionResult ListarMedicosDisponiveis()
 		{
 			var listarMedicos = _listarTodosOsMedicosDisponiveis.ListarTodosOsMedicosDisponiveis();
+			var response = listarMedicos.Select(medico => new CadastrarMedicoResponse(medico));
 
-			return Ok(listarMedicos);
+			return Ok(response);
 		}
 
 		[HttpGet("{crm}")]

@@ -16,18 +16,19 @@ namespace MedClin.Models
 		public string Crm { get; set; }		
 		public bool Status { get; set; }
 
-		[ForeignKey("Especialidade")]
+		[ForeignKey("EspecialidadeId")]
 		public int EspecialidadeId { get; set; }
 
 		// Propriedade de navegação para a especialidade
-		public Especialidade Especialidade { get; set; }
+		public virtual Especialidades Especialidade { get; set; }
 
 		public Medico() { }
 
 		public Medico(CadastrarMedicoRequest cadastrarMedico)
 		{
 			Nome = cadastrarMedico.Nome;
-			Crm = cadastrarMedico.Crm;			
+			Crm = cadastrarMedico.Crm;
+			EspecialidadeId = cadastrarMedico.EspecialidadeId;
 			Status = true;
 		}
 

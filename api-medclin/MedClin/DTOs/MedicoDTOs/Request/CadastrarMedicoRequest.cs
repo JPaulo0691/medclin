@@ -7,6 +7,7 @@ namespace MedClin.DTOs.MedicoDTOs.Request
 		public string Nome { get; set; }
 		[Required]
 		public string Crm { get; set; }
+		public int EspecialidadeId { get; set; }
 	
 	}
 }

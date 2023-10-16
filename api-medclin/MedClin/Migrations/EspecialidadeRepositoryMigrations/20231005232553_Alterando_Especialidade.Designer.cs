@@ -2,16 +2,19 @@
 using MedClin.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MedClin.Migrations.Medico
+namespace MedClin.Migrations.EspecialidadeRepositoryMigrations
 {
-    [DbContext(typeof(MedicoRepository))]
-    partial class MedicoContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(EspecialidadeRepository))]
+    [Migration("20231005232553_Alterando_Especialidade")]
+    partial class Alterando_Especialidade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +34,7 @@ namespace MedClin.Migrations.Medico
 
                     b.HasKey("Id");
 
-                    b.ToTable("Especialidade");
+                    b.ToTable("Especialidades");
                 });
 
             modelBuilder.Entity("MedClin.Models.Medico", b =>
@@ -59,7 +62,7 @@ namespace MedClin.Migrations.Medico
 
                     b.HasIndex("EspecialidadeId");
 
-                    b.ToTable("Medicos");
+                    b.ToTable("Medico");
                 });
 
             modelBuilder.Entity("MedClin.Models.Medico", b =>

@@ -9,16 +9,21 @@ namespace MedClin.DTOs.MedicoDTOs.Response
 		public int Id { get; set; }		
 		public string Nome { get; set; }		
 		public string Crm { get; set; }
-		public bool Status { get; set; }
+		public string Status { get; set; }
+
+		public string Especialidade { get; set; }
 
 		public CadastrarMedicoResponse() { }
 
         public CadastrarMedicoResponse(Medico cadastrarMedico)
         {
 			Id = cadastrarMedico.Id;
-            Nome = cadastrarMedico.Nome;
+			Nome = cadastrarMedico.Nome;
 			Crm = cadastrarMedico.Crm;
-			Status = cadastrarMedico.Status;
-        }
-    }
+			Status = (cadastrarMedico.Status) ? "Ativo" : "Inativo";
+			Especialidade = cadastrarMedico.Especialidade.Nome;
+		}
+
+		
+	}
 }

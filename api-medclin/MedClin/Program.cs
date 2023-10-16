@@ -2,7 +2,9 @@ using MedClin.DataBase;
 using MedClin.DTOs.MedicoDTOs.Request;
 using MedClin.Models;
 using MedClin.Services.Interface;
+using MedClin.Services.Interface.IEspecialidades;
 using MedClin.Services.ServicesImpl;
+using MedClin.Services.ServicesImpl.EspecilidadeService;
 using MedClin.Validations;
 using MedClin.Validations.Medicos;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +26,11 @@ namespace MedClin
 			builder.Services.AddScoped<IBuscarMedicoPorCrm, MedicoService>();
 			builder.Services.AddScoped<IListarTodosOsMedicosDisponiveis, MedicoService>();
 			builder.Services.AddScoped<IAtualizarStatusMedico, MedicoService>();
+
+			//Injetando serviço Especialidade
+			builder.Services.AddScoped<ICadastrarEspecialidadeMedica, EspecialidadeService>();
+			builder.Services.AddScoped<IEspecialidadePorId, EspecialidadeService>();
+
 
 			builder.Services.AddScoped<IValidForm<CadastrarMedicoRequest>, ValidarCrmCadastrado>();
 

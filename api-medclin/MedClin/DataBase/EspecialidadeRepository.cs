@@ -7,6 +7,6 @@ namespace MedClin.DataBase
 	{
 		public EspecialidadeRepository(DbContextOptions<EspecialidadeRepository> options) : base(options) { }
 
-		public DbSet<Especialidade> Especialidades { get; set; }
+		public DbSet<Especialidades> Especialidades { get; set; }
 	}
 }

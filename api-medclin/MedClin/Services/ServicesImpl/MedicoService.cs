@@ -4,6 +4,7 @@ using MedClin.Models;
 using MedClin.Services.Interface;
 using MedClin.Validations;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedClin.Services.ServicesImpl
 {
@@ -24,6 +25,8 @@ namespace MedClin.Services.ServicesImpl
 
 			Medico medico = new Medico(request);
 
+			_context.Medicos.Include(medico => medico.Especialidade).ToList();
+
 			_context.Medicos.Add(medico);
 			_context.SaveChanges();
 
@@ -32,12 +35,19 @@ namespace MedClin.Services.ServicesImpl
 
 		public IEnumerable<Medico> ListarTodosOsMedicosDisponiveis([FromQuery] int skip = 0, int take = 10)
 		{
-			return _context.Medicos.Skip(skip).Take(take).Where(medico => medico.Status == true);
+
+			return _context.Medicos
+				           .Include(medico => medico.Especialidade)
+				           .Skip(skip)
+						   .Take(take)
+						   .Where(medico => medico.Status == true);
 		}
 
 		public Medico EncontrarMedicoPorCrm(string crm)
 		{
-			Medico medico = _context.Medicos.FirstOrDefault(medico => medico.Crm.Equals(crm));
+			Medico medico = _context.Medicos
+									.Include(medico => medico.Especialidade)
+				                    .FirstOrDefault(medico => medico.Crm.Equals(crm));
 
 			if (medico == null)
 			{
